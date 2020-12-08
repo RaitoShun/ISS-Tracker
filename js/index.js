@@ -145,23 +145,23 @@ var RADIUS = Math.PI / 180;
 window.addEventListener("load", function () {
     let introTitle = document.querySelector('h1');
     let introParagraphTip = document.querySelector('p');
+    let loadScreen = document.querySelector('#load_screen');
 
     //Fetch initial location
     fetch("https://realtime-iss-tracker.herokuapp.com/")
         .then(response => response.json())
         .then(data => getISSPOS(data))
 
-    document.body.removeChild(load_screen);
-    introTitle.classList.add('slide_in');
-    setTimeout(() => {
-        introParagraphTip.classList.add('pulsate');
-    }, 4000);
-
     //Update the position of the ISS
     setInterval(() => {
         fetch("https://realtime-iss-tracker.herokuapp.com/")
             .then(response => response.json())
             .then(data => getISSPOS(data))
+             setTimeout(() => {
+                introParagraphTip.classList.add('pulsate');
+            }, 4000);
+            loadScreen.classList.add('invisible');
+            introTitle.classList.add('slide_in');
     }, 10000);
 
 

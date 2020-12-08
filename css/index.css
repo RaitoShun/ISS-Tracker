@@ -37,8 +37,22 @@
     position: fixed;
     z-index: 10;
     top: 0px;
+    color: white;
     height: 100%;
+    transition: 0.2s opacity;
     width: 100%;
+}
+
+#load_screen h2{
+    font-family:'Questrial';
+    text-align: center;
+    position: relative;
+    top: 60vh;
+}
+
+#load_screen.invisible{
+    opacity: 0;
+    pointer-events: none;
 }
 
 .loader {
